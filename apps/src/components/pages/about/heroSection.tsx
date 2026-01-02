@@ -33,7 +33,7 @@ export default function HeroSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=1000%",
+          end: "+=2000%",
           pin: true,
           scrub: 2,
           anticipatePin: 1,
@@ -49,7 +49,7 @@ export default function HeroSection() {
       }, 0)
         .to(textRef.current, {
           y: "-60vh",
-          duration: 1,
+          duration: 0.7,
           ease: "power1.inOut",
         }, 0)
         .to(
@@ -61,7 +61,7 @@ export default function HeroSection() {
             duration: 0.5,
             ease: "power2.out",
           },
-          0.8
+          0.6
         )
         .to(
           cardsRef.current?.querySelectorAll(".card") || [],
@@ -72,7 +72,7 @@ export default function HeroSection() {
             duration: 0.6,
             ease: "power2.out",
           },
-          0.9
+          0.5
         )
         .to({}, { duration: 2 });
     }, sectionRef);
