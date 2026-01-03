@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import main from "@/public/main.jpg";
-import AboutText from "@/src/components/about";
-import Navbar from "@/src/components/Navbar/navbar";
+import main from "@/public/about/main.jpg";
+import AboutText from "@/src/components/pages/about/about";
+import Navbar from "@/src/components/ui/navbar/navbar";
 
 export default function About() {
   return (
