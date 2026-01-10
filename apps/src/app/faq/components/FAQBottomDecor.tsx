@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import styles from './FAQBottomDecor.module.css';
 
 export default function FAQBottomDecor() {
   const [mounted, setMounted] = useState(false);
@@ -15,6 +16,7 @@ export default function FAQBottomDecor() {
     <img
       src="/bottom-right.webp"
       alt=""
+      className={styles.bottomDecor}
       style={{
         position: "fixed",
         bottom: "0",

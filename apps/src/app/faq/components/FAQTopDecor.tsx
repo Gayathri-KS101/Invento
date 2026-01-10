@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import styles from './FAQTopDecor.module.css';
 
 export default function FAQTopDecor() {
   const [mounted, setMounted] = useState(false);
@@ -15,6 +16,7 @@ export default function FAQTopDecor() {
     <img
       src="/top-left.webp"
       alt=""
+      className={styles.topDecor}
       style={{
         position: "fixed",
         top: "0",
