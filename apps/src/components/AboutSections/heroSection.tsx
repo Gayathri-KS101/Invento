@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import main from "@/public/main.jpg";
 import AboutText from "@/src/components/Text/heroSection";
-import Navbar from "@/src/components/Navbar/navbar";
+import Navbar from "@/src/components/ui/navbar/navbar";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,7 +20,14 @@ export default function HeroSection() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !textRef.current || !storyRef.current || !navbarRef.current || !cardsRef.current) return;
+    if (
+      !sectionRef.current ||
+      !textRef.current ||
+      !storyRef.current ||
+      !navbarRef.current ||
+      !cardsRef.current
+    )
+      return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -37,16 +43,24 @@ export default function HeroSection() {
         },
       });
 
-      tl.to(navbarRef.current, {
-        opacity: 0,
-        duration: 0.3,
-        ease: "expo.out",
-      }, 0)
-        .to(textRef.current, {
-          y: "-60vh",
-          duration: 0.7,
-          ease: "power1.inOut",
-        }, 0)
+      tl.to(
+        navbarRef.current,
+        {
+          opacity: 0,
+          duration: 0.3,
+          ease: "expo.out",
+        },
+        0,
+      )
+        .to(
+          textRef.current,
+          {
+            y: "-60vh",
+            duration: 0.7,
+            ease: "power1.inOut",
+          },
+          0,
+        )
         .to(
           storyRef.current?.querySelectorAll("p") || [],
           {
@@ -56,7 +70,7 @@ export default function HeroSection() {
             duration: 0.5,
             ease: "power2.out",
           },
-          0.6
+          0.6,
         )
         .to(
           cardsRef.current?.querySelectorAll(".card") || [],
@@ -67,7 +81,7 @@ export default function HeroSection() {
             duration: 0.6,
             ease: "power2.out",
           },
-          0.5
+          0.5,
         )
         .to({}, { duration: 2 });
     }, sectionRef);
@@ -83,7 +97,7 @@ export default function HeroSection() {
     >
       <div className="relative w-full h-full">
         <Image
-          src={main}
+          src={"/about/main.jpg"}
           fill
           priority
           className="object-cover"
@@ -113,7 +127,7 @@ export default function HeroSection() {
           ref={cardsRef}
           className="absolute bottom-4 sm:bottom-8 md:bottom-12 lg:bottom-20 left-1/2 -translate-x-1/2 w-full max-w-6xl px-4 md:px-8 z-10"
         >
-        <HeroSectionCard />
+          <HeroSectionCard />
         </div>
       </div>
     </section>
