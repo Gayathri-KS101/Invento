@@ -16,8 +16,12 @@ export default function EventsPage() {
 
   return (
     <div
-      className="min-h-screen w-full relative text-white bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/event/eventbg.svg')" }}
+      className="min-h-screen w-screen relative text-white bg-cover bg-center bg-no-repeat bg-fixed md:bg-scroll overflow-x-hidden"
+      style={{ 
+        backgroundImage: "url('/event/eventbg.svg')",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed"
+      }}
     >
       <FallingLeaves />
 
@@ -33,11 +37,11 @@ export default function EventsPage() {
         />
       )}
 
-      <div className="relative min-h-screen w-full">
-        <div className="flex w-full min-h-screen">
-          <div className="w-[15%]" />
+      <div className="relative min-h-screen w-screen">
+        <div className="flex flex-col md:flex-row w-screen min-h-screen">
+          <div className="hidden md:block md:w-[15%]" />
 
-          <div className="w-[85%] pr-10 py-16 relative">
+          <div className="w-screen md:w-[85%] px-4 md:px-0 md:pr-10 py-8 md:py-16 relative">
             <EventScheduleHeader
               activeDay={activeDay}
               setActiveDay={setActiveDay}

@@ -9,7 +9,19 @@ export default function EventScheduleHeader({
 }) {
   return (
     <>
-      <div className="absolute top-15 right-[4%] text-red-600 font-akira uppercase tracking-[0.1em]">
+      {/* Mobile day heading */}
+      <div className="md:hidden absolute top-4 right-4 mb-8 pl-4 text-red-600 font-akira">
+        <h2 className="text-2xl font-extrabold leading-none">
+          Day {activeDay}
+        </h2>
+        <span className="block text-3xl font-extrabold leading-none -mt-3">
+          {activeDay === 1 && "29 Jan"}
+          {activeDay === 2 && "30 Jan"}
+          {activeDay === 3 && "31 Jan"}
+        </span>
+      </div>
+
+      <div className="hidden md:block absolute top-15 right-[4%] text-red-600 font-akira uppercase tracking-[0.1em]">
 
         <div className="flex items-end gap-10">
 
@@ -75,11 +87,11 @@ export default function EventScheduleHeader({
 
       </div>
 
-      <div className="mb-20 pl-10">
-        <h1 className="text-7xl font-extrabold uppercase text-white font-akira">
+      <div className="mb-20 mt-16 md:mt-0 pl-6 md:pl-10">
+        <h1 className="text-5xl md:text-7xl font-extrabold uppercase text-white font-akira">
           Event
         </h1>
-        <h1 className="text-7xl font-extrabold uppercase text-white font-akira">
+        <h1 className="text-5xl md:text-7xl font-extrabold uppercase text-white font-akira">
           Schedule
         </h1>
       </div>
