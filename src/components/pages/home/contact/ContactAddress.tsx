@@ -1,7 +1,19 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { akira } from "@/src/lib/fonts";
 
 export default function ContactAddress() {
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <p
@@ -10,7 +22,7 @@ export default function ContactAddress() {
         position: "absolute",
         width: isMobile ? "200px" : "598px",
         height: "auto",
-        top: isMobile ? "300px" : "30px",
+        top: isMobile ? "220px" : "30px",
         right: isMobile ? "20px" : "0",
         left: isMobile ? "auto" : "auto",
         fontStyle: "normal",

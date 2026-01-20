@@ -19,26 +19,33 @@ export default function NavigationLinks({
   linksTop,
 }: NavigationLinksProps) {
   const [isMobile, setIsMobile] = useState(false);
+  const [isSmallPhone, setIsSmallPhone] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 1024);
-    const handleResize = () => {
+    const checkSize = () => {
       setIsMobile(window.innerWidth < 1024);
+      setIsSmallPhone(window.innerWidth < 400);
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    checkSize();
+    window.addEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", checkSize);
   }, []);
 
-  // For mobile, increase the top position to move further down
-  const titleMobileOffset = title === "Useful links" ? 350 : title === "About us" ? 200 : 0;
-  const linksMobileOffset = title === "Useful links" ? 320 : title === "About us" ? 170 : 0;
-  const titleRightOffset = title === "Useful links" ? "30px" : title === "About us" ? "30px" : "0px";
-  const linksRightOffset = title === "Useful links" ? "75px" : title === "About us" ? "70px" : "0px";
+  // For small phones like iPhone SE, move content up
+  const titleMobileOffset = isSmallPhone 
+    ? (title === "Useful links" ? 240 : title === "About us" ? 110 : 0)
+    : (title === "Useful links" ? 350 : title === "About us" ? 200 : 0);
+  const linksMobileOffset = isSmallPhone 
+    ? (title === "Useful links" ? 210 : title === "About us" ? 80 : 0)
+    : (title === "Useful links" ? 320 : title === "About us" ? 170 : 0);
+  const titleRightOffset = isMobile ? (title === "Useful links" ? "30px" : title === "About us" ? "30px" : "0px") : titleRight;
+  const linksRightOffset = isMobile ? (title === "Useful links" ? "75px" : title === "About us" ? "70px" : "0px") : linksRight;
   
   const finalTitleTop = isMobile ? `${parseInt(titleTop) + titleMobileOffset}px` : titleTop;
   const finalLinksTop = isMobile ? parseInt(linksTop) + linksMobileOffset : parseInt(linksTop);
   const finalTitleRight = isMobile ? titleRightOffset : titleRight;
   const finalLinksRight = isMobile ? linksRightOffset : linksRight;
+  const linkGap = isSmallPhone ? 24 : (isMobile ? 30 : 40);
 
   return (
     <>
@@ -75,7 +82,7 @@ export default function NavigationLinks({
             width: "131px",
             height: "36px",
             right: finalLinksRight,
-            top: `${finalLinksTop + index * (isMobile ? 30 : 40)}px`,
+            top: `${finalLinksTop + index * linkGap}px`,
             fontFamily: "'Urbanist', sans-serif",
             fontStyle: "normal",
             fontWeight: "700",
