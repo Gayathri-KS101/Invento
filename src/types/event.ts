@@ -13,5 +13,8 @@ export interface Event {
   time: string
   venue: string
   poster: string
-  day:  1 | 2 | 3 
+  day: 1 | 2 | 3
+  prizePool?: string
+  regFee?: string
+  contact?: string
 }

@@ -53,23 +53,63 @@ export default function EventModal({
             {event.title}
           </h2>
 
-      
-          <p className="text-sm leading-relaxed text-gray-200 mb-8 max-w-xl" style={{ fontFamily: "'Urbanist', sans-serif" }}>
+          <p
+            className="text-sm leading-relaxed text-gray-200 mb-10 max-w-xl"
+            style={{ fontFamily: "'Urbanist', sans-serif" }}
+          >
             {event.description}
           </p>
 
-       
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-2 text-sm mb-8">
-            <div><span className="text-red-500 font-bold">Prize Pool:</span> 20K</div>
-            <div><span className="text-red-500 font-bold">Reg Fee:</span> 200</div>
-            <div className="hidden md:block"><span className="text-red-500 font-bold">Time:</span> {event.time}</div>
-            <div className="hidden md:block"><span className="text-red-500 font-bold">Venue:</span> {event.venue}</div>
-            <div className="hidden md:block"><span className="text-red-500 font-bold">Queries:</span> 98098 21355</div>
+        
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+
+         
+            <div className="space-y-5">
+              <div className="text-lg md:text-xl font-bold">
+                <div className="text-red-500 uppercase tracking-wide">
+                  Prize Pool
+                </div>
+                <div className="text-white">
+                  {event.prizePool}
+                </div>
+              </div>
+
+              <div className="text-lg md:text-xl font-bold">
+                <div className="text-red-500 uppercase tracking-wide">
+                  Reg Fee
+                </div>
+                <div className="text-white">
+                  {event.regFee}
+                </div>
+              </div>
+            </div>
+
+      
+            <div className="space-y-3 text-sm md:text-base">
+              <div>
+                <span className="text-red-500 font-bold uppercase">
+                  Time:
+                </span>{" "}
+                {event.time}
+              </div>
+              <div>
+                <span className="text-red-500 font-bold uppercase">
+                  Venue:
+                </span>{" "}
+                {event.venue}
+              </div>
+              <div>
+                <span className="text-red-500 font-bold uppercase">
+                  Queries:
+                </span>{" "}
+                98098 21355
+              </div>
+            </div>
+
           </div>
 
-        
           <div className="flex justify-center md:justify-start">
-            <button className="bg-red-600 px-8 md:px-14 py-2 md:py-3 text-xs md:text-sm font-bold uppercase hover:bg-red-700">
+            <button className="bg-red-600 px-10 md:px-16 py-3 text-xs md:text-sm font-bold uppercase hover:bg-red-700">
               Register
             </button>
           </div>
