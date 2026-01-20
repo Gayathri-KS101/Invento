@@ -10,21 +10,22 @@ interface TeamCardProps {
 }
 
 export default function TeamCard({ image, name, role }: TeamCardProps) {
-  const [imgSrc, setImgSrc] = useState<string | StaticImageData | undefined>(image);
   const [hasError, setHasError] = useState(false);
+  const [prevImage, setPrevImage] = useState(image);
 
-  useEffect(() => {
-    setImgSrc(image);
+  // State derivation pattern: Reset error state when image prop changes
+  if (image !== prevImage) {
+    setPrevImage(image);
     setHasError(false);
-  }, [image]);
+  }
 
   return (
     <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden bg-gray-100 group shadow-lg">
       {/* 1. Person Image */}
       <div className="absolute inset-0 z-0">
-        {!hasError && imgSrc ? (
+        {!hasError && image ? (
             <Image
-            src={imgSrc}
+            src={image}
             alt={name}
             fill
             className="object-cover object-top filter grayscale group-hover:grayscale-0 transition-opacity duration-500"
