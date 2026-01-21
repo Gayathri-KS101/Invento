@@ -80,13 +80,13 @@ export default function EventTable({
         <div className="flex-[7] flex items-center gap-8 pl-4 relative">
           <button
             onClick={() => setOpen(!open)}
-            className="flex items-center gap-2 border border-white/50 px-4 py-1.5 uppercase font-semibold tracking-wider"
+            className="flex items-center gap-2 border border-white/50 px-3 py-1.5 uppercase font-semibold tracking-wider"
           >
-            <img src="/event/filter.svg" className="w-4 h-4" />
+            <img src="/event/filter.svg" className="w-8 h-4" />
             Filter
           </button>
 
-          <span className="uppercase tracking-[0.25em] text-sm">
+          <span className="uppercase tracking-[0.25em] text-sm pl-35 ">
             Event
           </span>
 
@@ -110,8 +110,8 @@ export default function EventTable({
           )}
         </div>
 
-        <div className="flex-[2] uppercase tracking-wide -ml-6">Time</div>
-        <div className="flex-[2] uppercase tracking-wide text-center">Venue</div>
+        <div className="flex-[2] uppercase tracking-wide -ml-52">Time</div>
+        <div className="flex-[2] uppercase tracking-wide -ml-15">Venue</div>
         <div className="flex-[1]" />
       </div>
 
