@@ -37,7 +37,6 @@ const HeroSection: React.FC = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: "+=1200",
             scrub: 0.8,
             pin: true,
             pinSpacing: true,
