@@ -59,7 +59,7 @@ export default function FAQSection() {
 
     const ctx = gsap.context(() => {
       // Initial states with transforms - only set if elements exist
-      if (bg) gsap.set(bg, { opacity: 1 });
+      if (bg) gsap.set(bg, { opacity: 0 });
       if (topLeft) gsap.set(topLeft, { opacity: 0, x: -100 });
       if (bottomRight) gsap.set(bottomRight, { opacity: 0, x: 100, y: 100 });
       if (title) gsap.set(title, { opacity: 0, y: 100 });
@@ -77,12 +77,14 @@ export default function FAQSection() {
         },
       });
 
-      // All elements animate simultaneously
-      if (bg) tl.to(bg, { opacity: 1, duration: 1.2, ease: "power2.out" }, 0);
-      if (topLeft) tl.to(topLeft, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, 0);
-      if (bottomRight) tl.to(bottomRight, { opacity: 1, x: 0, y: 0, duration: 1.2, ease: "power2.out" }, 0);
-      if (title) tl.to(title, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, 0);
-      if (table) tl.to(table, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, 0);
+      // Background fades in gradually for smooth crossfade with Preview
+      if (bg) tl.to(bg, { opacity: 1, duration: 1.5, ease: "power2.out" }, 0);
+      
+      // Other elements animate after background starts fading in
+      if (topLeft) tl.to(topLeft, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, 0.3);
+      if (bottomRight) tl.to(bottomRight, { opacity: 1, x: 0, y: 0, duration: 1.2, ease: "power2.out" }, 0.3);
+      if (title) tl.to(title, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, 0.3);
+      if (table) tl.to(table, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, 0.3);
     }, container);
 
     return () => ctx.revert();
@@ -90,7 +92,7 @@ export default function FAQSection() {
 
   return (
     <>
-      <div className="relative w-full h-screen pointer-events-none" />
+      <div className="relative w-full h-[50vh] pointer-events-none" />
       <div ref={spacerRef} className="relative w-full h-[400vh] pointer-events-none" />
 
       <section className="fixed top-0 left-0 h-screen w-screen overflow-hidden z-20" style={{ display: isVisible ? "block" : "none" }}>
