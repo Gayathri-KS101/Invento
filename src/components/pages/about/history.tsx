@@ -44,11 +44,23 @@ export default function History() {
       const page1 = drillDown.querySelector("#history-page-1");
       const page2 = drillDown.querySelector("#history-page-2");
       const contentWrapper = drillDown.querySelector("#history-content-wrapper"); 
+      
+      // Mobile Selectors
+      const mobileP1 = drillDown.querySelector("#mobile-p1");
+      const mobileStaticGroup = drillDown.querySelector("#mobile-static-group");
+      const mobileP5 = drillDown.querySelector("#mobile-p5");
+
       const pagoda = drillDown.querySelector("#history-pagoda");
       const pattern = drillDown.querySelector("#history-pattern");
 
       if (page1) gsap.set(page1, { opacity: 0, y: 50 });
       if (page2) gsap.set(page2, { opacity: 0, y: 50 });
+      
+      // Mobile Init
+      if (mobileP1) gsap.set(mobileP1, { opacity: 0, y: 50 });
+      if (mobileStaticGroup) gsap.set(mobileStaticGroup, { opacity: 0, y: 50 });
+      if (mobileP5) gsap.set(mobileP5, { opacity: 0, height: 0, marginTop: 0, marginBottom: 0, padding: 0, overflow: "hidden" });
+
       if (pagoda) gsap.set(pagoda, { opacity: 0, y: -100 });
       if (pattern) gsap.set(pattern, { opacity: 0, y: 100 });
 
@@ -85,7 +97,14 @@ export default function History() {
       }, "+=0.5");
 
       tl.to(title, {
-         y: "-75vh",
+         y: () => {
+             // Dynamic calculation to hit top of window with padding
+             const currentTop = title.getBoundingClientRect().top;
+             if (window.innerWidth < 768) {
+                 return `${-(currentTop - 30)}px`; // Mobile: 85px from top (nav height)
+             }
+             return `${-(currentTop - 25)}px`; // Desktop: 40px from top
+         },
          x: 0,
          scale: 1,
          duration: 1.5,
@@ -99,31 +118,57 @@ export default function History() {
           duration: 0.1 
       }, "-=1");
 
+      // Add synchronization label
+      tl.addLabel("contentReveal", "-=0.5");
+
       if (page1) {
           tl.to(page1, {
               opacity: 1,
               y: 0,
               duration: 1.5,
               ease: "power2.out"
-          }, "-=0.5");
+          }, "contentReveal");
+      }
+      
+      if (mobileP1) {
+          tl.to(mobileP1, {
+              opacity: 1,
+              y: 0,
+              duration: 1.5,
+              ease: "power2.out"
+          }, "contentReveal");
+      }
+      
+      if (mobileStaticGroup) {
+          tl.to(mobileStaticGroup, {
+              opacity: 1,
+              y: 0,
+              duration: 1.5,
+              ease: "power2.out"
+          }, "contentReveal");
       }
       
       if (pagoda) {
-          tl.to(pagoda, { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "<");
+          tl.to(pagoda, { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "contentReveal");
       }
       if (pattern) {
-          tl.to(pattern, { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "<");
+          tl.to(pattern, { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "contentReveal");
       }
 
       tl.to({}, { duration: 1 });
 
       // SCROLL UP to reveal Page 2
-      if (contentWrapper) {
-         tl.to(contentWrapper, {
-            y: "-45vh",
-            duration: 2.5,
-            ease: "power1.inOut"
-         });
+      // Check if ANY content wrapper exists to drive the scroll logic
+      if (contentWrapper || mobileP1) { 
+         
+         // Desktop Scroll Logic
+         if (contentWrapper) {
+            tl.to(contentWrapper, {
+                y: "-45vh",
+                duration: 2.5,
+                ease: "power1.inOut"
+            });
+         }
 
          tl.to(title, { 
              opacity: 0, 
@@ -141,6 +186,28 @@ export default function History() {
                 duration: 1, 
                 ease: "power1.out" 
             }, "<"); 
+         }
+         
+         // Mobile Scroll Logic: Collapse P1
+         if (mobileP1) {
+            tl.to(mobileP1, { 
+                opacity: 0, 
+                height: 0, 
+                margin: 0,
+                padding: 0,
+                overflow: "hidden",
+                duration: 1, 
+                ease: "power1.out" 
+            }, "<"); 
+            
+            // Dynamic Margin for Static Group (Page 2 View)
+            if (mobileStaticGroup) {
+               tl.to(mobileStaticGroup, {
+                   marginTop: "10vh",
+                   duration: 1,
+                   ease: "power1.inOut"
+               }, "<");
+            }
          }
 
          if (pagoda) {
@@ -168,6 +235,17 @@ export default function History() {
                 "<"
              );
           }
+      }
+
+      // Mobile P5 Reveal
+      if (mobileP5) {
+          tl.to(mobileP5, {
+              height: "auto",
+              opacity: 1,
+              padding: "0.25rem", // Match p-1
+              duration: 1,
+              ease: "power2.out"
+          }, "<+=0.5");
       }
       
       tl.to({}, { duration: 1 });
