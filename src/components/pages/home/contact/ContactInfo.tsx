@@ -1,12 +1,31 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { akira } from "@/src/lib/fonts";
 
-export default function ContactInfo() {
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
+interface ContactInfoProps {
+  showElements: boolean;
+  emailRef: React.RefObject<HTMLParagraphElement | null>;
+  phoneRef: React.RefObject<HTMLParagraphElement | null>;
+}
+
+export default function ContactInfo({ showElements, emailRef, phoneRef }: ContactInfoProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
       {/* Email */}
       <p
+        ref={emailRef}
         className={akira.className}
         style={{
           position: "absolute",
@@ -21,6 +40,7 @@ export default function ContactInfo() {
           color: "#FFFFFF",
           zIndex: 20,
           margin: 0,
+          visibility: showElements ? "visible" : "hidden",
         }}
       >
         inventogec@gmail.com
@@ -28,6 +48,7 @@ export default function ContactInfo() {
       
       {/* Phone Number */}
       <p
+        ref={phoneRef}
         className={akira.className}
         style={{
           position: "absolute",
@@ -42,6 +63,7 @@ export default function ContactInfo() {
           color: "#FFFFFF",
           zIndex: 20,
           margin: 0,
+          visibility: showElements ? "visible" : "hidden",
         }}
       >
         1234567890

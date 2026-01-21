@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FAQTable from "@/src/components/pages/faq/FAQTable";
 import { akira } from "@/src/lib/fonts";
+
+if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
 const faqItems = [
   {
@@ -44,136 +48,219 @@ const faqItems = [
 ];
 
 export default function FAQSection() {
-  const [mounted, setMounted] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const spacerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const topLeftRef = useRef<HTMLImageElement>(null);
+  const bottomRightRef = useRef<HTMLImageElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const tableRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    const container = containerRef.current;
+    const spacer = spacerRef.current;
+    const bg = bgRef.current;
+    const topLeft = topLeftRef.current;
+    const bottomRight = bottomRightRef.current;
+    const title = titleRef.current;
+    const table = tableRef.current;
 
-  const isMobile =
-    mounted && typeof window !== "undefined" && window.innerWidth < 1024;
+    if (!container || !spacer || !bg) return;
+
+    const ctx = gsap.context(() => {
+      // Initial states with transforms only
+      gsap.set(bg, { opacity: 1 });
+      gsap.set(topLeft, { opacity: 0, x: -100 });
+      gsap.set(bottomRight, { opacity: 0, x: 100, y: 100 });
+      gsap.set(title, { opacity: 0, y: 100 });
+      gsap.set(table, { opacity: 0, y: -100 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: spacer,
+          start: "top center",
+          end: "bottom center",
+          scrub: 1.5,
+          invalidateOnRefresh: true,
+          onEnter: () => setIsVisible(true),
+          onLeaveBack: () => setIsVisible(false),
+        },
+      });
+
+      // Background appears immediately
+      tl.to(bg, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+
+      // Hold background-only for 1 second worth of scroll
+      tl.to({}, { duration: 1 });
+
+      // Top-left slides in from left with strong transform
+      tl.to(
+        topLeft,
+        { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" },
+        "<"
+      );
+
+      // Bottom-right slides in diagonal with strong transform
+      tl.to(
+        bottomRight,
+        { opacity: 1, x: 0, y: 0, duration: 1.2, ease: "power2.out" },
+        "<+=0.2"
+      );
+
+      // Title slides up with strong transform
+      tl.to(
+        title,
+        { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
+        "<+=0.2"
+      );
+
+      // Table slides down with strong transform
+      tl.to(
+        table,
+        { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
+        "<+=0.2"
+      );
+
+      // Hold for viewing
+      tl.to({}, { duration: 1.5 });
+    }, container);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <>
-      <section className="relative min-h-screen overflow-hidden">
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 0,
-            pointerEvents: "none",
-            backgroundImage: "url('/faq/bg.webp')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
+      <div ref={spacerRef} className="relative w-full h-[400vh] pointer-events-none" />
 
-        {/* Top Left Decoration */}
-        <img
-          src="/faq/top-left.webp"
-          alt=""
-          style={{
-            position: "absolute",
-            top: "0",
-            left: "0",
-            zIndex: 5,
-            pointerEvents: "none",
-            width: "100%",
-            maxWidth: isMobile ? "250px" : "426px",
-            height: "auto",
-            aspectRatio: "426/343"
-          }}
-        />
-
-        {/* Bottom Right Decoration */}
-        <img
-          src="/faq/bottom-right.webp"
-          alt=""
-          style={{
-            position: "absolute",
-            bottom: "0",
-            right: "0",
-            zIndex: 5,
-            pointerEvents: "none",
-            width: "100%",
-            maxWidth: isMobile ? "250px" : "426px",
-            height: "auto",
-            aspectRatio: "426/343"
-          }}
-        />
-
-        <h1
-          className={akira.className}
-          style={{
-            position: "absolute",
-            width: "291px",
-            height: "160px",
-            left: isMobile ? "20px" : "250px",
-            top: isMobile ? "100px" : "120px",
-            fontStyle: "normal",
-            fontWeight: "800",
-            fontSize: isMobile ? "50px" : "87.94px",
-            lineHeight: "160px",
-            display: "flex",
-            alignItems: "center",
-            textAlign: "center",
-            letterSpacing: "2px",
-            color: "#FF0000",
-            margin: "0",
-            zIndex: 10,
-          }}
-        >
-          FAQ<span style={{ fontSize: "0.6em" }}>s</span>
-        </h1>
-
-        <div className="relative z-10 px-4 h-full pt-8 md:pt-64 pb-32">
-          <FAQTable items={faqItems} />
-        </div>
-
-        {/* Mobile Contact Button */}
-        {isMobile && (
+      <section className="fixed top-0 left-0 h-screen w-screen overflow-hidden z-20" style={{ display: isVisible ? "block" : "none" }}>
+        <div ref={containerRef} className="absolute w-full h-full">
           <div
+            ref={bgRef}
             style={{
               position: "absolute",
-              bottom: "32px",
-              left: "32px",
-              zIndex: 50,
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 0,
+              pointerEvents: "none",
+              backgroundImage: "url('/faq/bg.webp')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+
+          {/* Top Left Decoration */}
+          <img
+            ref={topLeftRef}
+            src={typeof window !== "undefined" && window.innerWidth < 1024 ? "/faq/top-left-mob.webp" : "/faq/top-left.webp"}
+            alt=""
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              zIndex: 5,
+              pointerEvents: "none",
+              width: typeof window !== "undefined" && window.innerWidth < 1024 ? "180px" : "280px",
+              height: "auto",
+              aspectRatio: "426/480",
+            }}
+          />
+
+          {/* Bottom Right Decoration */}
+          <img
+            ref={bottomRightRef}
+            src="/faq/bottom-right.webp"
+            alt=""
+            style={{
+              position: "absolute",
+              bottom: "0",
+              right: "0",
+              zIndex: 5,
+              pointerEvents: "none",
+              width: "100%",
+              maxWidth: typeof window !== "undefined" && window.innerWidth < 1024 ? "250px" : "426px",
+              height: "auto",
+              aspectRatio: "426/343",
+            }}
+          />
+
+          <h1
+            ref={titleRef}
+            className={akira.className}
+            style={{
+              position: "absolute",
+              width: "291px",
+              height: "160px",
+              left: typeof window !== "undefined" && window.innerWidth < 1024 ? "20px" : "160px",
+              top: typeof window !== "undefined" && window.innerWidth < 1024 ? "140px" : "80px",
+              fontStyle: "normal",
+              fontWeight: "800",
+              fontSize: typeof window !== "undefined" && window.innerWidth < 1024 ? "50px" : "87.94px",
+              lineHeight: "160px",
+              display: "flex",
+              alignItems: "center",
+              textAlign: "center",
+              letterSpacing: "2px",
+              color: "#FF0000",
+              margin: "0",
+              zIndex: 10,
             }}
           >
-            <p
-              style={{
-                color: "#fff",
-                fontSize: "14px",
-                marginBottom: "12px",
-                fontFamily: "Inter",
-                width: "128px",
-              }}
-            >
-              Still have any doubts?
-            </p>
-            <button
-              style={{
-                width: "128px",
-                backgroundColor: "#FF0000",
-                color: "#fff",
-                fontSize: "12px",
-                fontWeight: "bold",
-                padding: "8px 12px",
-                border: "1px solid #FF0000",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Contact us
-            </button>
+            FAQ<span style={{ fontSize: "0.6em" }}>s</span>
+          </h1>
+
+          <div 
+            ref={tableRef}
+            className="relative z-10 px-4 h-full pt-8 md:-mt-16 pb-32"
+          >
+            <FAQTable items={faqItems} />
           </div>
-        )}
+
+          {/* Mobile Contact Button */}
+          {typeof window !== "undefined" && window.innerWidth < 1024 && (
+            <div
+              style={{
+                position: "absolute",
+                bottom: "32px",
+                left: "32px",
+                zIndex: 50,
+              }}
+            >
+              <p
+                style={{
+                  color: "#fff",
+                  fontSize: "14px",
+                  marginBottom: "12px",
+                  fontFamily: "Inter",
+                  width: "128px",
+                }}
+              >
+                Still have any doubts?
+              </p>
+              <button
+                style={{
+                  width: "128px",
+                  backgroundColor: "#FF0000",
+                  color: "#fff",
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  padding: "8px 12px",
+                  border: "1px solid #FF0000",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                }}
+              >
+                Contact us
+              </button>
+            </div>
+          )}
+        </div>
       </section>
     </>
   );

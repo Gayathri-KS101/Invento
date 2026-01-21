@@ -1,10 +1,28 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { akira } from "@/src/lib/fonts";
 
-export default function ContactHeader() {
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
+interface ContactHeaderProps {
+  showElements: boolean;
+  headerRef: React.RefObject<HTMLHeadingElement | null>;
+}
+
+export default function ContactHeader({ showElements, headerRef }: ContactHeaderProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <h1
+      ref={headerRef}
       className={akira.className}
       style={{
         position: "absolute",
@@ -14,11 +32,12 @@ export default function ContactHeader() {
         top: isMobile ? "50px" : "130px",
         fontStyle: "normal",
         fontWeight: "800",
-        fontSize: isMobile ? "40px" : "75px",
-        lineHeight: isMobile ? "50px" : "90px",
+        fontSize: isMobile ? "36px" : "75px",
+        lineHeight: isMobile ? "44px" : "90px",
         color: "#FFFFFF",
         zIndex: 20,
         margin: 0,
+        visibility: showElements ? "visible" : "hidden",
       }}
     >
       CONTACT US

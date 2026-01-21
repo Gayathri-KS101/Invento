@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 interface SocialLink {
   href: string;
   src: string;
@@ -37,14 +41,31 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
-export default function SocialLinks() {
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
+interface SocialLinksProps {
+  showElements: boolean;
+  socialLinksRefs: React.MutableRefObject<(HTMLAnchorElement | null)[]>;
+}
+
+export default function SocialLinks({ showElements, socialLinksRefs }: SocialLinksProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
       {socialLinks.map((link, index) => (
         <a
           key={index}
+          ref={(el) => {
+            socialLinksRefs.current[index] = el;
+          }}
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
@@ -55,6 +76,7 @@ export default function SocialLinks() {
             zIndex: 20,
             cursor: "pointer",
             textDecoration: "none",
+            visibility: showElements ? "visible" : "hidden",
           }}
         >
           <img
