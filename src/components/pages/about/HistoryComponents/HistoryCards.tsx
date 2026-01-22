@@ -6,13 +6,13 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const historyImages = [
-  "/about/history/cards/img1.png",
-  "/about/history/cards/img2.png",
-  "/about/history/cards/img3.png",
-  "/about/history/cards/img4.png",
-  "/about/history/cards/img5.png",
-  "/about/history/cards/img6.png",
-  "/about/history/cards/img7.png",
+  "/about/history/cards/img1.webp",
+  "/about/history/cards/img2.webp",
+  "/about/history/cards/img3.webp",
+  "/about/history/cards/img4.webp",
+  "/about/history/cards/img5.webp",
+  "/about/history/cards/img6.webp",
+  "/about/history/cards/img7.webp",
 ];
 
 // Refined SLOTS to fit 100% width relative container
