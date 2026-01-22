@@ -90,18 +90,18 @@ export default function ContactSection() {
           trigger: spacer,
           start: "top center",
           end: "bottom center",
-          scrub: 1.5,
+          scrub: 2,
           invalidateOnRefresh: true,
           onEnter: () => setIsVisible(true),
           onLeaveBack: () => setIsVisible(false),
         },
       });
 
-      // Background appears first with slower, smoother fade
-      if (bg) tl.to(bg, { opacity: 1, duration: 2, ease: "power1.out" }, 0);
+      // Background appears first with much slower, smoother fade
+      if (bg) tl.to(bg, { opacity: 1, duration: 3.5, ease: "sine.out" }, 0);
       
       // All other elements animate after a delay (after background has mostly faded in)
-      const elementDelay = 1.2;
+      const elementDelay = 2;
       if (logo) tl.to(logo, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, elementDelay);
       if (bottomImg) tl.to(bottomImg, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, elementDelay);
       if (address) tl.to(address, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, elementDelay);
