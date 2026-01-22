@@ -4,6 +4,7 @@ export type EventCategory =
   | "GENERAL"
   | "SAPTHA"
   | "NATYA"
+  | "TAKSATHI"
 
 export interface Event {
   id: string
@@ -17,6 +18,7 @@ export interface Event {
   prizePool?: string
   regFee?: string
   contact?: string
+  registration?:string
 }
 
 

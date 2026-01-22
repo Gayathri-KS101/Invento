@@ -102,14 +102,18 @@ export default function EventModal({
                 <span className="text-red-500 font-bold uppercase">
                   Queries:
                 </span>{" "}
-                98098 21355
+                 {event.contact}
               </div>
             </div>
 
           </div>
 
           <div className="flex justify-center md:justify-start">
-            <button className="bg-red-600 px-10 md:px-16 py-3 text-xs md:text-sm font-bold uppercase hover:bg-red-700">
+            <button 
+             onClick={(e) => {
+                  window.open(event.registration, "_blank")
+                }}
+            className="bg-red-600 px-10 md:px-16 py-3 text-xs md:text-sm font-bold uppercase hover:bg-red-700">
               Register
             </button>
           </div>
