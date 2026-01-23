@@ -219,9 +219,12 @@ const HeroSection: React.FC = () => {
             >
               INVENTO
             </h1>
-            <h3 ref={dateRef} className="text-[#FF0000] opacity-0">
+            <h4
+              ref={dateRef}
+              className=" text-[#FF0000] font-flood opacity-0 text-2xl md:text-3xl lg:text-4xl"
+            >
               JAN 29, 30, 31
-            </h3>
+            </h4>
           </div>
         </div>
       </div>

@@ -7,6 +7,15 @@ import { useRef } from "react";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 
+// ✅ image imports
+import sapthaWeb from "@/public/home/preview/saptha.webp";
+import technicalWeb from "@/public/home/preview/technical.webp";
+import generalWeb from "@/public/home/preview/general.webp";
+
+import sapthaMobile from "@/public/home/preview/saptha-mobile.webp";
+import technicalMobile from "@/public/home/preview/technical-mobile.webp";
+import generalMobile from "@/public/home/preview/general-mobile.webp";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Preview = () => {
@@ -14,7 +23,6 @@ const Preview = () => {
 
   useGSAP(
     () => {
-      // Desktop Animations
       const sections = gsap.utils.toArray(
         ".desktop-section",
         mainRef.current,
@@ -37,7 +45,7 @@ const Preview = () => {
               ease: "power2.out",
               scrollTrigger: {
                 trigger: section,
-                start: "top center", // Adjusted to ensure it triggers earlier
+                start: "top center",
                 end: "bottom center",
                 scrub: 1,
                 invalidateOnRefresh: true,
@@ -56,7 +64,7 @@ const Preview = () => {
               ease: "power2.out",
               scrollTrigger: {
                 trigger: section,
-                start: "top center", // Adjusted
+                start: "top center",
                 end: "bottom center",
                 scrub: 1,
                 invalidateOnRefresh: true,
@@ -64,52 +72,6 @@ const Preview = () => {
             },
           );
         }
-      });
-
-      // Mobile Animations
-      const mobileImagesRight = gsap.utils.toArray<Element>(
-        ".right-image-mobile",
-        mainRef.current,
-      );
-      mobileImagesRight.forEach((img: Element) => {
-        gsap.fromTo(
-          img,
-          { x: 50, autoAlpha: 0 },
-          {
-            x: 0,
-            autoAlpha: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              invalidateOnRefresh: true,
-              trigger: img,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        );
-      });
-
-      const mobileImagesLeft = gsap.utils.toArray<Element>(
-        ".left-image-mobile",
-        mainRef.current,
-      );
-      mobileImagesLeft.forEach((img: Element) => {
-        gsap.fromTo(
-          img,
-          { x: -50, autoAlpha: 0 },
-          {
-            x: 0,
-            autoAlpha: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: img,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        );
       });
     },
     { scope: mainRef },
@@ -119,9 +81,9 @@ const Preview = () => {
     <div ref={mainRef} className="w-full overflow-hidden">
       <div className="hidden lg:block md:block">
         <section className="min-h-screen relative desktop-section">
-          <Link href={"/coming-soon"}>
+          <Link href="/coming-soon">
             <Image
-              src="/home/preview/saptha.webp"
+              src={sapthaWeb}
               width={1200}
               height={300}
               alt="Saptha"
@@ -131,7 +93,7 @@ const Preview = () => {
 
           <div className="absolute flex -bottom-18 w-full px-24 justify-end z-30">
             <Link
-              href={"/coming-soon"}
+              href="/coming-soon"
               className="bg-[#A41F22] p-3 font-akira text-white right-btn"
             >
               KNOW MORE
@@ -142,15 +104,16 @@ const Preview = () => {
         <section className="min-h-screen relative desktop-section">
           <div className="absolute flex -bottom-18 w-full px-42 justify-end">
             <Link
-              href={"/coming-soon"}
+              href="/coming-soon"
               className="bg-[#A41F22] p-3 font-akira text-white left-btn"
             >
               KNOW MORE
             </Link>
           </div>
-          <Link href={"/coming-soon"}>
+
+          <Link href="/coming-soon">
             <Image
-              src="/home/preview/technical.webp"
+              src={technicalWeb}
               width={1200}
               height={300}
               alt="Technical"
@@ -160,9 +123,9 @@ const Preview = () => {
         </section>
 
         <section className="min-h-screen relative desktop-section">
-          <Link href={"/coming-soon"}>
+          <Link href="/coming-soon">
             <Image
-              src="/home/preview/general.webp"
+              src={generalWeb}
               width={1200}
               height={300}
               alt="General"
@@ -172,7 +135,7 @@ const Preview = () => {
 
           <div className="absolute flex -bottom-18 w-full px-42 justify-end">
             <Link
-              href={"/coming-soon"}
+              href="/coming-soon"
               className="bg-[#A41F22] p-3 font-akira text-white left-btn"
             >
               KNOW MORE
@@ -181,11 +144,11 @@ const Preview = () => {
         </section>
       </div>
 
-      {/* MOBILE LAYOUT */}
+      {/* MOBILE */}
       <div className="md:hidden lg:hidden min-h-screen flex justify-center flex-col gap-10 py-10">
-        <div className="w-full flex justify-end ">
+        <div className="w-full flex justify-end">
           <Image
-            src={"/home/preview/saptha-mobile.webp"}
+            src={sapthaMobile}
             width={330}
             height={100}
             alt=""
@@ -193,19 +156,19 @@ const Preview = () => {
           />
         </div>
 
-        <div className="w-full flex justify-start ">
+        <div className="w-full flex justify-start">
           <Image
-            src={"/home/preview/technical-mobile.webp"}
+            src={technicalMobile}
             width={330}
             height={100}
-            alt="gh"
+            alt=""
             className="left-image-mobile"
           />
         </div>
 
         <div className="w-full flex justify-end">
           <Image
-            src={"/home/preview/general-mobile.webp"}
+            src={generalMobile}
             width={330}
             height={100}
             alt=""

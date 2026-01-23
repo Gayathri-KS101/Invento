@@ -30,9 +30,14 @@
     font-family: var(--font-poppins);
 }
 
+.font-flood {
+    font-family: var(--font-flood);
+}
+
 .animate-fadeIn {
     animation: fadeIn 0.3s ease forwards;
 }
+
 .leaf {
     top: -10%;
     opacity: 0;
@@ -129,8 +134,8 @@ body {
 }
 
 body {
-  font-family: var(--font-akira), sans-serif;
-  @apply bg-white text-black;
+    font-family: var(--font-akira), sans-serif;
+    @apply bg-white text-black;
 }
 
 .history-card {
