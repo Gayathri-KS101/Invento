@@ -9,7 +9,6 @@ import { HERO_ASSETS } from "@/src/lib/preload";
 import { usePreload } from "@/src/hooks/usePreload";
 import { LoadingScreen } from "@/src/components/loading/LoadingScreen";
 
-
 export default function HomePage() {
   const { progress, done } = usePreload(HERO_ASSETS);
 

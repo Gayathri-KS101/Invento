@@ -120,9 +120,9 @@ const HeroSection: React.FC = () => {
         )
         .fromTo(
           ".pro-show-wrapper",
-          { y: -50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 5, ease: "power3.inOut" },
-          "-=0.5",
+          { opacity: 0 },
+          { opacity: 1, duration: 1, ease: "power3.inOut" },
+          "-=1",
         );
 
       const t1 = gsap.timeline({
