@@ -185,10 +185,22 @@ const HeroSection: React.FC = () => {
           />
         </div>
         <div ref={leftImage} className="absolute -left-12 lg:left-0">
-          <Image src="/home/left-side.webp" alt="Visual" width={350} height={460} className="w-[200px] lg:w-[460px]" />
+          <Image
+            src="/home/left-side.webp"
+            alt="Visual"
+            width={350}
+            height={460}
+            className="w-[200px] lg:w-[460px]"
+          />
         </div>
         <div ref={rightImage} className="absolute -right-12 lg:right-0">
-          <Image src="/home/right-side.webp" alt="Visual" width={350} height={460} className="w-[200px] lg:w-[460px]" />
+          <Image
+            src="/home/right-side.webp"
+            alt="Visual"
+            width={350}
+            height={460}
+            className="w-[200px] lg:w-[460px]"
+          />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center px-6">
           <div ref={logoRef}>
