@@ -92,6 +92,54 @@ const Preview = () => {
           }
         });
 
+        // Mobile animations
+        const mobileRightImages = mainRef.current?.querySelectorAll(".right-image-mobile");
+        const mobileLeftImages = mainRef.current?.querySelectorAll(".left-image-mobile");
+
+        if (mobileRightImages && mobileRightImages.length > 0) {
+          mobileRightImages.forEach((img) => {
+            gsap.fromTo(
+              img,
+              { xPercent: 100, autoAlpha: 0 },
+              {
+                xPercent: 0,
+                autoAlpha: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: img,
+                  start: "top 80%",
+                  end: "top 20%",
+                  scrub: 1,
+                  invalidateOnRefresh: true,
+                  refreshPriority: -1,
+                },
+              },
+            );
+          });
+        }
+
+        if (mobileLeftImages && mobileLeftImages.length > 0) {
+          mobileLeftImages.forEach((img) => {
+            gsap.fromTo(
+              img,
+              { xPercent: -100, autoAlpha: 0 },
+              {
+                xPercent: 0,
+                autoAlpha: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: img,
+                  start: "top 80%",
+                  end: "top 20%",
+                  scrub: 1,
+                  invalidateOnRefresh: true,
+                  refreshPriority: -1,
+                },
+              },
+            );
+          });
+        }
+
         // Refresh ScrollTrigger after animations are set up
         ScrollTrigger.refresh();
       };
@@ -182,34 +230,61 @@ const Preview = () => {
 
       {/* MOBILE */}
       <div className="md:hidden lg:hidden min-h-screen flex justify-center flex-col gap-10 py-10">
-        <div className="w-full flex justify-end">
-          <Image
-            src={sapthaMobile}
-            width={330}
-            height={100}
-            alt=""
-            className="right-image-mobile"
-          />
+        <div className="w-full flex flex-col items-end gap-4 px-4">
+          <Link scroll={false} href="/coming-soon">
+            <Image
+              src={sapthaMobile}
+              width={330}
+              height={100}
+              alt=""
+              className="right-image-mobile"
+            />
+          </Link>
+          <Link
+            scroll={false}
+            href="/coming-soon"
+            className="bg-[#A41F22] px-3 py-2 text-sm font-akira text-white"
+          >
+            KNOW MORE
+          </Link>
         </div>
 
-        <div className="w-full flex justify-start">
-          <Image
-            src={technicalMobile}
-            width={330}
-            height={100}
-            alt=""
-            className="left-image-mobile"
-          />
+        <div className="w-full flex flex-col items-start gap-4 px-4">
+          <Link scroll={false} href="/coming-soon">
+            <Image
+              src={technicalMobile}
+              width={330}
+              height={100}
+              alt=""
+              className="left-image-mobile"
+            />
+          </Link>
+          <Link
+            scroll={false}
+            href="/coming-soon"
+            className="bg-[#A41F22] px-3 py-2 text-sm font-akira text-white"
+          >
+            KNOW MORE
+          </Link>
         </div>
 
-        <div className="w-full flex justify-end">
-          <Image
-            src={generalMobile}
-            width={330}
-            height={100}
-            alt=""
-            className="right-image-mobile"
-          />
+        <div className="w-full flex flex-col items-end gap-4 px-4">
+          <Link scroll={false} href="/coming-soon">
+            <Image
+              src={generalMobile}
+              width={330}
+              height={100}
+              alt=""
+              className="right-image-mobile"
+            />
+          </Link>
+          <Link
+            scroll={false}
+            href="/coming-soon"
+            className="bg-[#A41F22] px-3 py-2 text-sm font-akira text-white"
+          >
+            KNOW MORE
+          </Link>
         </div>
       </div>
     </div>
