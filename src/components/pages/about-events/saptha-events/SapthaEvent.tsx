@@ -39,12 +39,7 @@ const SapthaEvent = () => {
       const mm = gsap.matchMedia();
 
       // SHARED ENTRY ANIMATIONS 
-      gsap.from(bgWrapperRef.current, {
-        scale: 1.3,
-        duration: 1.5,
-        ease: "power2.out",
-      });
-
+      // Lady & Title Entry
       gsap.from(ladyRef.current, {
         y: 100,
         scale: 0.5,
@@ -75,6 +70,13 @@ const SapthaEvent = () => {
 
       // 1. DESKTOP ANIMATIONS (> 768px)
       mm.add("(min-width: 769px)", () => {
+         // Desktop Entry: BG Zoom Out (Standard)
+         gsap.from(bgWrapperRef.current, {
+            scale: 1.3,
+            duration: 1.5,
+            ease: "power2.out",
+         });
+
          // Background blurs and fades to black (Original Desktop effect)
          tl.to(
             bgWrapperRef.current,
@@ -120,14 +122,32 @@ const SapthaEvent = () => {
 
       // 2. MOBILE ANIMATIONS (<= 768px)
       mm.add("(max-width: 768px)", () => {
+          // Mobile Entry: BG Zoom Out (Lands at 1.2 to match scroll start)
+          gsap.fromTo(bgWrapperRef.current, 
+            { scale: 1.6 }, 
+            { scale: 1.2, duration: 1.5, ease: "power2.out" }
+          );
+
+          // Set origin to top so it zooms out while staying pinned to top
+          gsap.set(bgWrapperRef.current, { transformOrigin: "top center" });
+
           // Background Gradient Overlay Slide Up (Creates soft separation)
-          // Moves from bottom off-screen to covering bottom 60-70%
           tl.fromTo(mobileGradientRef.current, 
             { y: "100%" },
             {
                y: "0%", 
                duration: 1,
                ease: "power2.out"
+            }, 0);
+          
+          // Background Zoom Out Effect
+          // Start zoomed in (1.2) and zoom out to normal (1) to avoid black bars
+          tl.fromTo(bgWrapperRef.current,
+            { scale: 1.2 },
+            {
+              scale: 1, 
+              duration: 1,
+              ease: "power2.out"
             }, 0);
 
           // 1. Move Lady & Title UP to make room, but KEEP VISIBLE
@@ -151,36 +171,56 @@ const SapthaEvent = () => {
 
            // 2. Description Fades In - AFTER Lady/Title move
           if (descriptionRef.current) {
-               tl.to(descriptionRef.current, { 
+               tl.fromTo(descriptionRef.current, 
+                   { y: -100, autoAlpha: 0 }, // Set position lower
+                   { 
+                   y: -100, // Reduced upward move to stay lower
                    autoAlpha: 1, 
                    duration: 1, 
                    ease: "power2.inOut" 
-               }, ">"); // Starts after previous animations end
+               }, "-=0.5"); // Starts 0.5s before previous animation ends (earlier)
           }
 
           // NO CLEANUP / FADE OUT for Mobile as requested.
 
-           // 3. Natya Poster slides in - AFTER Description
+           // 3. Natya Poster slides in
           if (natyaRef.current) {
              tl.fromTo(natyaRef.current, 
-                { x: "-100vw", autoAlpha: 1 }, 
-                { x: "0vw", autoAlpha: 1, duration: 1.5, ease: "power2.out" }, 
+                { 
+                    // --- NATYA START POSITION ---
+                    x: "-100vw",  // Starts off-screen Left
+                    y: "22vh",    // MATCHES END POSITION "20vh"
+                    autoAlpha: 1 
+                }, 
+                { 
+                    // --- NATYA END POSITION ---
+                    x: "0vw",     // Ends horizontally centered
+                    y: "22vh",    // Ends at Bottom (Change this to move end up/down)
+                    duration: 1.5, 
+                    ease: "power2.out" 
+                }, 
                 ">" // Starts after Description
              );
-             
-             // Vertical adjustment for Natya (synced with slide in)
-             tl.to(natyaRef.current, { y: "20vh", duration: 1.5, ease: "power2.out" }, "<");
           }
 
-          // 4. Taksati Poster slides in - AFTER Natya
+          // 4. Taksati Poster slides in
           if (taksatiRef.current) {
              tl.fromTo(taksatiRef.current, 
-                { x: "100vw", autoAlpha: 1 }, 
-                { x: "0vw", autoAlpha: 1, duration: 1.5, ease: "power2.out" }, 
+                { 
+                    // --- TAKSATI START POSITION ---
+                    x: "100vw",   // Starts off-screen Right
+                    y: "40vh",    // MATCHES END POSITION "40vh"
+                    autoAlpha: 1 
+                }, 
+                { 
+                    // --- TAKSATI END POSITION ---
+                    x: "0vw",     // Ends horizontally centered
+                    y: "40vh",    // Ends at Bottom
+                    duration: 1.5, 
+                    ease: "power2.out" 
+                }, 
                 ">" // Starts after Natya
              );
-             // Vertical adjustment for Taksati (synced with slide in)
-             tl.to(taksatiRef.current, { y: "20vh", duration: 1.5, ease: "power2.out" }, "<");
           }
       });
       
@@ -239,7 +279,7 @@ const SapthaEvent = () => {
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <p 
                     ref={descriptionRef}
-                    className="text-white font-urbanist text-center text-sm md:text-xl lg:text-3xl w-full max-w-[90vw] px-4 md:px-0 mt-[15vh] md:mt-[25vh] z-30 opacity-0 leading-relaxed"
+                    className="text-white font-urbanist text-left md:text-center text-sm md:text-xl lg:text-3xl w-full max-w-[90vw] px-4 md:px-0 mt-[15vh] md:mt-[25vh] z-30 opacity-0 leading-relaxed"
                 >
                     SAPTHA Art Show brings together seven powerful expressions of creativity, blending art, culture, and
                     <br className="block my-2" />
