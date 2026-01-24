@@ -10,53 +10,46 @@ export default function EventScheduleHeader({
   activeDay: 1 | 2 | 3
   setActiveDay: React.Dispatch<React.SetStateAction<1 | 2 | 3>>
 }) {
-  // ---- constants ----
-  const days: (1 | 2 | 3)[] = [1, 2, 3]
+  const touchStartX = useRef<number | null>(null)
+  const touchEndX = useRef<number | null>(null)
+
   const MIN_SWIPE_DISTANCE =
   typeof window !== "undefined"
-    ? Math.min(120, window.innerWidth * 0.35)
+    ? Math.min(120, window.innerWidth * 0.45)
     : 80
 
+  const days: (1 | 2 | 3)[] = [1, 2, 3]
 
-  // ---- refs ----
-  const touchStartX = useRef<number | null>(null)
-  const isSwiping = useRef(false)
-
-  // ---- handlers ----
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
-    isSwiping.current = true
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isSwiping.current || touchStartX.current === null) return
-
-    const currentX = e.touches[0].clientX
-    const distance = touchStartX.current - currentX
-
-    if (Math.abs(distance) > MIN_SWIPE_DISTANCE) {
-      if (distance > 0 && activeDay < 3) {
-        setActiveDay(prev => (prev + 1) as 1 | 2 | 3)
-      } else if (distance < 0 && activeDay > 1) {
-        setActiveDay(prev => (prev - 1) as 1 | 2 | 3)
-      }
-
-      // lock swipe → one gesture = one change
-      isSwiping.current = false
-      touchStartX.current = null
-    }
+    touchEndX.current = e.touches[0].clientX
   }
 
   const handleTouchEnd = () => {
-    isSwiping.current = false
+    if (touchStartX.current === null || touchEndX.current === null) return
+
+    const distance = touchStartX.current - touchEndX.current
+
+    if (Math.abs(distance) > MIN_SWIPE_DISTANCE) {
+      if (distance > 0 && activeDay < 3) {
+        setActiveDay((activeDay + 1) as 1 | 2 | 3)
+      } else if (distance < 0 && activeDay > 1) {
+        setActiveDay((activeDay - 1) as 1 | 2 | 3)
+      }
+    }
+
     touchStartX.current = null
+    touchEndX.current = null
   }
 
   return (
     <>
       {/* Mobile */}
       <div
-        className="md:hidden relative w-full touch-pan-y"
+        className="md:hidden relative w-full"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
