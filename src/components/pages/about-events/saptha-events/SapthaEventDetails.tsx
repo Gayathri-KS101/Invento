@@ -16,7 +16,7 @@ interface EventSectionProps {
 
 const EventSection = ({ title, events, imageFolder }: EventSectionProps) => {
     return (
-        <section className="w-full max-w-7xl px-2 md:px-4 flex flex-col items-start mt-20">
+        <section className="w-full max-w-7xl px-2 md:px-4 flex flex-col items-start mt-0 md:mt-20">
             <h1 className="font-akira text-2xl md:text-6xl text-white mb-10 md:mb-40 mt-0 md:mt-15 text-left">
                 {title}
             </h1>
@@ -70,7 +70,7 @@ const EventSection = ({ title, events, imageFolder }: EventSectionProps) => {
 
 const SapthaEventDetails = () => {
     return (
-      <div className="w-full bg-black text-white flex flex-col items-center justify-start pt-20 pb-32 md:pb-60 relative">
+      <div className="w-full bg-black text-white flex flex-col items-center justify-start pt-0 md:pt-20 pb-32 md:pb-60 relative">
         <EventSection 
             title="GROUP EVENTS" 
             events={groupEvents} 
