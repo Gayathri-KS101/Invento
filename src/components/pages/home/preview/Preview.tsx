@@ -72,6 +72,8 @@ const Preview = () => {
 
           // Animate left images (must have left-btn)
           if (leftImg && leftBtn) {
+            // Set button to be always clickable
+            gsap.set(leftBtn, { pointerEvents: 'auto', zIndex: 50 });
             gsap.fromTo(
               [leftImg, leftBtn],
               { xPercent: -100, autoAlpha: 0 },
@@ -183,10 +185,11 @@ const Preview = () => {
         </section>
 
         <section className="min-h-screen relative desktop-section">
-          <div className="absolute flex -bottom-18 w-full px-42 justify-end">
+          <div className="absolute flex -bottom-18 w-full px-42 justify-end z-30">
             <Link
               href="/about-events?category=technical"
-              className="bg-[#A41F22] p-3 font-akira text-white left-btn"
+              className="bg-[#A41F22] p-3 font-akira text-white left-btn relative z-50"
+              style={{ pointerEvents: 'auto' }}
             >
               KNOW MORE
             </Link>
