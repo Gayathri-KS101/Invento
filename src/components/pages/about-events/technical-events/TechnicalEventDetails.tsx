@@ -1,11 +1,10 @@
 import EventDetails from "../components/EventDetails";
-import { technicalGroupEvents, technicalSoloEvents } from "@/src/data/technical-events-data";
-
+import { technicalCompetitions, technicalWorkshops } from '@/src/data/technical-events-data';
 const TechnicalEventDetails = () => {
     return (
         <EventDetails
-            groupEvents={technicalGroupEvents}
-            soloEvents={technicalSoloEvents}
+            groupEvents={technicalCompetitions}
+            soloEvents={technicalWorkshops}
             groupEventsImageFolder="/about-events/technical/group events"
             soloEventsImageFolder="/about-events/technical/solo events"
         />

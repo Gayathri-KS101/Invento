@@ -1,3 +1,6 @@
+"use client"; // Must be a client component to use searchParams
+
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import EventSection, { EventItem } from "./EventSection";
 
@@ -14,16 +17,32 @@ const EventDetails = ({
     groupEventsImageFolder, 
     soloEventsImageFolder 
 }: EventDetailsProps) => {
+    // 1. Grab the category from the URL
+    const searchParams = useSearchParams();
+    const category = searchParams.get("category");
+
+    // 2. Determine titles based on the category
+    let firstTitle = "GROUP EVENTS";
+    let secondTitle = "SOLO EVENTS";
+
+    if (category === "technical") {
+        firstTitle = "WORKSHOPS";
+        secondTitle = "COMPETITIONS";
+    } else if (category === "general") {
+        firstTitle = "SWAG ITEMS"; // Adjust as needed
+        secondTitle = "PROSHOW EVENTS";      // Adjust as needed
+    }
+
     return (
         <div className="w-full bg-black text-white flex flex-col items-center justify-start pt-0 md:pt-20 pb-32 md:pb-60 relative">
             <EventSection 
-                title="GROUP EVENTS" 
+                title={firstTitle} 
                 events={groupEvents} 
                 imageFolder={groupEventsImageFolder} 
             />
             
             <EventSection 
-                title="SOLO EVENTS" 
+                title={secondTitle} 
                 events={soloEvents} 
                 imageFolder={soloEventsImageFolder} 
             />
@@ -41,4 +60,3 @@ const EventDetails = ({
 };
 
 export default EventDetails;
-

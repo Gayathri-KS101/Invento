@@ -9,6 +9,7 @@ import { useGeneralAnimations } from "./useGeneralAnimations";
 const ASSETS = [
   "/about-events/general/general-sam.webp",
   "/about-events/general/general-bg.webp",
+
 ];
 
 const GeneralEvent = () => {
@@ -21,7 +22,10 @@ const GeneralEvent = () => {
     mobileGradientRef, 
     samRef, 
     titleRef, 
-    descriptionRef
+    descriptionRef,
+    MudRef,
+    RoadRef
+
   } = useGeneralAnimations(done);
 
   if (!done) {
@@ -93,6 +97,8 @@ const GeneralEvent = () => {
         <div className="relative z-10 min-h-screen" style={{ backgroundColor: "#E3CFAF" }}>
             <GeneralEventDetails />
         </div>
+         {/* Third Section: Posters */}
+                    
 
     </div>
   );

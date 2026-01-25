@@ -12,6 +12,8 @@ export const useGeneralAnimations = (done: boolean) => {
     const samRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const descriptionRef = useRef<HTMLParagraphElement>(null);
+    const MudRef = useRef<HTMLDivElement>(null);
+    const RoadRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         if (!done) return; 
@@ -79,6 +81,12 @@ export const useGeneralAnimations = (done: boolean) => {
 
             tl.to(titleRef.current, { y: -2000, scale: 0.5, duration: 0.5, ease: "power2.in"}, ">");
             tl.to(descriptionRef.current, { y: -1000, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, "<");
+
+            if (MudRef.current && RoadRef.current) {
+                tl.fromTo(MudRef.current, { x: "-100vw", autoAlpha: 1 }, { x: "0vw", autoAlpha: 1, duration: 1.5, ease: "power2.out" }, "<");
+                tl.to(MudRef.current, { y: "-80vh", duration: 1.5, ease: "power2.out" }, ">");
+                tl.fromTo(RoadRef.current, { x: "100vw", autoAlpha: 1 }, { x: "0vw", autoAlpha: 1, duration: 1.5, ease: "power2.out" }, "<");
+            }
         });
 
         // 2. MOBILE ANIMATIONS (<= 768px)
@@ -107,6 +115,7 @@ export const useGeneralAnimations = (done: boolean) => {
                     { y: -100, autoAlpha: 1, duration: 1, ease: "power2.inOut" }, "-=0.5"
                 ); 
             }
+            
         });
         
     }, { scope: containerRef, dependencies: [done] });
@@ -117,7 +126,9 @@ export const useGeneralAnimations = (done: boolean) => {
         mobileGradientRef,
         samRef,
         titleRef,
-        descriptionRef
+        descriptionRef,
+        MudRef,
+        RoadRef
     };
 };
 
