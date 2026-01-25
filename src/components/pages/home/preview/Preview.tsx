@@ -72,6 +72,8 @@ const Preview = () => {
 
           // Animate left images (must have left-btn)
           if (leftImg && leftBtn) {
+            // Set button to be always clickable
+            gsap.set(leftBtn, { pointerEvents: 'auto', zIndex: 50 });
             gsap.fromTo(
               [leftImg, leftBtn],
               { xPercent: -100, autoAlpha: 0 },
@@ -162,7 +164,7 @@ const Preview = () => {
     <div ref={mainRef} className="w-full overflow-hidden">
       <div className="hidden lg:block md:block">
         <section className="min-h-screen relative desktop-section">
-          <Link scroll={false} href="/coming-soon">
+          <Link scroll={false} href="/about-events?category=saptha">
             <Image
               src={sapthaWeb}
               width={1200}
@@ -174,9 +176,8 @@ const Preview = () => {
 
           <div className="absolute flex -bottom-18 w-full px-24 justify-end z-30">
             <Link
-              scroll={false}
-              href="/coming-soon"
-              className="bg-[#A41F22] p-3 font-akira text-white right-btn"
+              href="/about-events?category=saptha"
+              className="bg-[#A41F22] px-3 py-2 text-sm lg:p-3 lg:text-base font-akira text-white right-btn"
             >
               KNOW MORE
             </Link>
@@ -184,11 +185,11 @@ const Preview = () => {
         </section>
 
         <section className="min-h-screen relative desktop-section">
-          <div className="absolute flex -bottom-18 w-full px-42 justify-end">
+          <div className="absolute flex -bottom-18 w-full px-42 justify-end z-30">
             <Link
-              scroll={false}
               href="/coming-soon"
-              className="bg-[#A41F22] p-3 font-akira text-white left-btn"
+              className="bg-[#A41F22] px-3 py-2 text-sm lg:p-3 lg:text-base font-akira text-white left-btn relative z-50"
+              style={{ pointerEvents: 'auto' }}
             >
               KNOW MORE
             </Link>
@@ -218,9 +219,8 @@ const Preview = () => {
 
           <div className="absolute flex bottom-0 w-full px-24 justify-end" style={{ zIndex: 100 }}>
             <Link
-              scroll={false}
               href="/coming-soon"
-              className="bg-[#A41F22] p-3 font-akira text-white right-btn"
+              className="bg-[#A41F22] px-3 py-2 text-sm lg:p-3 lg:text-base font-akira text-white left-btn"
             >
               KNOW MORE
             </Link>
@@ -231,7 +231,7 @@ const Preview = () => {
       {/* MOBILE */}
       <div className="md:hidden lg:hidden min-h-screen flex justify-center flex-col gap-10 py-10">
         <div className="w-full flex flex-col items-end gap-4 px-4">
-          <Link scroll={false} href="/coming-soon">
+          <Link scroll={false} href="/about-events?category=saptha">
             <Image
               src={sapthaMobile}
               width={330}
@@ -241,8 +241,7 @@ const Preview = () => {
             />
           </Link>
           <Link
-            scroll={false}
-            href="/coming-soon"
+            href="/about-events?category=saptha"
             className="bg-[#A41F22] px-3 py-2 text-sm font-akira text-white"
           >
             KNOW MORE
@@ -260,7 +259,6 @@ const Preview = () => {
             />
           </Link>
           <Link
-            scroll={false}
             href="/coming-soon"
             className="bg-[#A41F22] px-3 py-2 text-sm font-akira text-white"
           >
@@ -279,7 +277,6 @@ const Preview = () => {
             />
           </Link>
           <Link
-            scroll={false}
             href="/coming-soon"
             className="bg-[#A41F22] px-3 py-2 text-sm font-akira text-white"
           >
