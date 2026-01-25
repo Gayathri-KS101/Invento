@@ -112,7 +112,7 @@ export default function EventModal({
           <div className="flex justify-center md:justify-start font-urbanist">
             <button 
              onClick={(e) => {
-                  window.open(event.registration, "_blank")
+                  window.open(event.links.registration, "_blank")
                 }}
             className="bg-red-600 px-10 md:px-16 py-3 text-xs md:text-sm font-bold uppercase hover:bg-red-700">
               Register
