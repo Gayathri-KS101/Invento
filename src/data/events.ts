@@ -568,7 +568,7 @@ export const eventsData: Event[] = [
     id: "dcc2cfdb-007f-49a8-bd4b-5c7cbd7c155e",
     name: "cybersecurity-101",
     title: "CYBERSECURITY 101",
-    description: "CYBERSECURITY 101 - WORKSHOP A hands-on Cybersecurity 101 workshop at Invento \u201926 , provided by PaceLab (IIT-Certified) , designed to introduce participants to the fundamentals of cybersecurity, including threat analysis, safe online practices, and hands-on exercises in securing systems and data. Date: 29th January 2026 Workshop Details : Provided by:&nbsp; PaceLab (IIT certified) https://www.pacelab.in/ Participant Requirements: Laptop and charger Certificates: Provided to all participants Activity Points: Eligible for up to 30 points",
+    description: "CYBERSECURITY 101 - WORKSHOP A hands-on Cybersecurity 101 workshop at Invento \u201926 , provided by PaceLab (IIT-Certified) , designed to introduce participants to the fundamentals of cybersecurity, including threat analysis, safe online practices, and hands-on exercises in securing systems and data. Date: 30th January 2026 Workshop Details : Provided by:&nbsp; PaceLab (IIT certified) https://www.pacelab.in/ Participant Requirements: Laptop and charger Certificates: Provided to all participants Activity Points: Eligible for up to 30 points",
     category: "WORKSHOP",
     time: "14:00",
     venue: "IT NETWORKING LAB, GEC Palakkad",
