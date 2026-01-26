@@ -148,7 +148,7 @@ export const eventsData: Event[] = [
   venue: "Shuttle Court, GEC Palakkad",
   poster:
     "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/2dea0b82-5719-479a-979a-e2c41e136c29/39-banner.png",
-  day: 1, // Jan 30 → Day 1 (adjust if your fest day mapping differs)
+  day: 2, // Jan 30 → Day 1 (adjust if your fest day mapping differs)
   prizePool: "10000",
   regFee: "399",
   contact: "9061065865, 9400632784",
@@ -326,6 +326,57 @@ export const eventsData: Event[] = [
       registration: "https://app.makemypass.com/event/line-follower"
     }
   },
+  {
+  id: "b4c7f274-7317-4362-9209-74892209e074",
+  name: "robowar",
+  title: "ROBOWAR",
+  description: "RoboWar 25 kg A competitive robot combat event where teams design and build combat robots to push opponents out of the arena. Teams compete in intense 1v1 battles testing engineering skills, driving precision, and robot durability. Prize Pool: 15K. Registration Fee: ₹400 per team. Date: 30/01/2026. Team Size: Maximum 4 members. Robot Specifications: Weight Limit - Maximum 25 kg (adapters and remote controllers excluded), Size Limit - Must fit within 75cm x 75cm x 75cm box, Power - Maximum voltage 40V. Allowed Movement: Wheels, tracks, and walking mechanisms. Prohibited: Jumping, hopping, or flying. Allowed Weapons: Non-destructive weapons only - flippers, wedges, and lifting devices. Match Format: 1 vs 1 matches with 3 rounds, each round up to 5 minutes. Win by pushing opponent out of arena. Wireless control systems must have frequency switching capability (at least 4 frequencies). Judges' decisions are final.",
+  category: "TECH",
+  time: "09:00",
+  venue: "College Entrance, GEC Sreekrishnapuram, Palakkad",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/b4c7f274-7317-4362-9209-74892209e074/20-logo.png",
+  day: 2,
+  prizePool: "15K",
+  regFee: "400",
+  contact: "7907800309, 9037071420",
+  links: {
+    registration: "https://app.makemypass.com/event/robowar"
+  }
+},
+{
+  id: "b97bbf19-15e4-46ef-8b7d-09fc118e1f23",
+  name: "trash-art",
+  title: "TRASH ART",
+  description: "Trash Art - Competition A creative group-based competition at Invento '26 where participants transform scrap and waste materials into artistic or innovative creations, promoting creativity, teamwork, and environmental sustainability. Date: 30th January 2026. Registration Fee: ₹50. Provided Materials: Scrap and waste materials will be provided on-site. Participant Requirements: Can participate as individual (solo) or as a team. Judging Criteria: Creativity, innovation, effective use of scrap materials, and overall presentation. Activity Points: Eligible for up to 30 points.",
+  category: "GENERAL",
+  time: "09:30",
+  venue: "ME Second Year Classroom, GEC Sreekrishnapuram, Palakkad",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/b97bbf19-15e4-46ef-8b7d-09fc118e1f23/66-logo.png",
+  day: 2,
+  prizePool: "NILL",
+  regFee: "50",
+  contact: "8075662470, 9037765176",
+  links: {
+    registration: "https://app.makemypass.com/event/trash-art"
+  }
+},
+{
+  id: "e3518e74-c46e-4483-bd99-629da3a71cce",
+  name: "robo-race-1",
+  title: "ROBO RACE",
+  description: "Robo Race High-speed robots battle precision and obstacles on the track where only the fastest and smartest survive. Prize Pool: 7.5K. Date: 30/01/2026. Registration Fee: ₹200 per team. Team Size: Maximum 4 members per team. Goal: Navigate a rugged robot through a multi-terrain obstacle course with the fastest completion time. Robot Options: Teams can bring their own custom-built bot (BYOB) or use organizer-provided bot. Custom Bot Specifications: Size - Must fit within 30cm x 30cm x 20cm box, Power - Electric motors only, Maximum 12V, Mobility - Wheels or tracks recommended, no flying. Track Features: Loose soil/sand pits, elevation ramps, narrow bridges, bumps, and Hit & Fall tasks. Race Format: Each team gets 1 run, maximum 5 minutes to complete course. Penalties: +5 seconds per reset/touch, +30 seconds per skipped obstacle, +15 seconds for failed Hit & Fall tasks. Judges' decisions are final.",
+  category: "TECH",
+  time: "09:30",
+  venue: "Civil Corridor, GEC Palakkad",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/e3518e74-c46e-4483-bd99-629da3a71cce/72-logo.png",
+  day: 2,
+  prizePool: "7.5K",
+  regFee: "200",
+  contact: "8078794136, 9746985618",
+  links: {
+    registration: "https://app.makemypass.com/event/robo-race-1"
+  }
+},
   {
     id: "9f44c415-a1a3-49bb-94aa-4f509c7fff52",
     name: "solid-works",
