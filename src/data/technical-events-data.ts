@@ -2,23 +2,23 @@ export const technicalCompetitions = [
     { 
         image: "https://firebasestorage.googleapis.com/v0/b/enigma-d05b9.firebasestorage.app/o/invento%2Fctf%20poster.jpg.jpeg?alt=media&token=2a1e78ca-eef5-42fc-8bc7-3c3e426d2418", 
         title: "CAPTURE THE FLAG", 
-        date: "Wednesday | 29.Jan.2026" 
+        date: "Thursday | 29.Jan.2026" 
     },
     { 
-        image: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/20720477-5342-49cc-8d9a-230e4075b5d1/39-logo.png", 
+        image: "https://firebasestorage.googleapis.com/v0/b/enigma-d05b9.firebasestorage.app/o/invento%2FWhatsApp%20Image%202026-01-27%20at%208.55.45%20PM.jpeg?alt=media&token=e22b12c4-3a57-44c2-bc72-f084e892aaaf",
         title: "IEEE MATRIX 3.0", 
-        date: "Wed-Thu | 29-30.Jan.2026" 
+        date: "Thu-Fri | 29-30.Jan.2026" 
     },
     { 
         image: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/632ce799-cfc0-4524-8ed6-c8fc82ace280/33-logo.png", 
         title: "PROJECT EXPO", 
-        date: "Thu-Fri | 30-31.Jan.2026" 
+        date: "Friday | 30-31.Jan.2026" 
     },
-    { 
-        image: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/822ad28e-5bbb-4ea1-a206-0fa0525bd102/45-logo.png", 
-        title: "DRONE EXPO", 
-        date: "Thursday | 30.Jan.2026" 
-    },
+    {
+        image: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/2dea0b82-5719-479a-979a-e2c41e136c29/39-banner.png",
+        title: "ROBO SOCCER",
+        date: "Friday | 30.Jan.2026"
+    }
 ];
 
 export const technicalWorkshops = [

@@ -26,8 +26,8 @@ const EventDetails = ({
     let secondTitle = "SOLO EVENTS";
 
     if (category === "technical") {
-        firstTitle = "WORKSHOPS";
-        secondTitle = "COMPETITIONS";
+        firstTitle = "COMPETITIONS";
+        secondTitle = "WORKSHOPS";
     } else if (category === "general") {
         firstTitle = "SWAG ITEMS"; // Adjust as needed
         secondTitle = "PROSHOW EVENTS";      // Adjust as needed
