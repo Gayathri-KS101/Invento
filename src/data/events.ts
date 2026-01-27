@@ -241,41 +241,6 @@ export const eventsData: Event[] = [
       registration: "https://app.makemypass.com/event/after-hours"
     }
   },
-  
-   {
-    id: "1f301a32-fe8b-4eb8-bdfe-07fd5bb1eb5e",
-    name: "day-pass",
-    title: "DAY PASS",
-    description: "Day Passes \u2013 Invento \u201926 Experience Invento \u201926 with our Day Passes, designed to give you full access to exciting pro shows, technical learning, and the vibrant festival atmosphere. Choose a single day or opt for the bundle to enjoy it all. Please note: Day Passes are applicable for Day 2 and Day 3 only. Day 1 events require separate registration. Day 1 Highlights | 29th January 2026 IEEE Matrix Hackathon \u2013 Innovate and compete Capture The Flag \u2013 Test your technical skills Talk Session by an ISRO Engineer \u2013 Insights from India\u2019s space missions Cultural Events \u2013 Art, music, and performances \u20b91199 \u2013 Day 2 Pass | 30th January 2026 Includes entry to Day 2 of Invento \u201926 featuring: Pro show by Fejo Free access to any one technical workshop Access to the Job Fair Entry to Expos Entry to Natya \u2013 The Cultural Night \u20b91299 \u2013 Day 3 Pass | 31st January 2026 Includes entry to Day 3 of Invento \u201926 featuring: Pro show by Haricharan Free access to any one technical workshop Access to the Job Fair Entry to Expos Entry to Taksati - The Fashion Fest \u20b91999 \u2013 Bundle Pass (Day 2 &amp; Day 3) Enjoy the complete Invento \u201926 experience with: Pro shows by Fejo &amp; Haricharan Free access to any one technical workshop Access to the Job Fair Entry to Expos Full access to Natya \u2013 The Cultural Night and Taksati",
-    category: "GENERAL",
-    time: "00:00",
-    venue: "GEC Palakkad",
-    poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/1f301a32-fe8b-4eb8-bdfe-07fd5bb1eb5e/29-logo.png",
-    day: 2,
-    prizePool: "NILL",
-    regFee: "1199",
-    contact: "8590966425, 9995626292",
-    links: {
-      registration: "https://app.makemypass.com/event/day-pass"
-    }
-  },
-   {
-    id: "1f301a32-fe8b-4eb8-bdfe-07fd5bb1eb5e",
-    name: "day-pass",
-    title: "DAY PASS",
-    description: "Day Passes \u2013 Invento \u201926 Experience Invento \u201926 with our Day Passes, designed to give you full access to exciting pro shows, technical learning, and the vibrant festival atmosphere. Choose a single day or opt for the bundle to enjoy it all. Please note: Day Passes are applicable for Day 2 and Day 3 only. Day 1 events require separate registration. Day 1 Highlights | 29th January 2026 IEEE Matrix Hackathon \u2013 Innovate and compete Capture The Flag \u2013 Test your technical skills Talk Session by an ISRO Engineer \u2013 Insights from India\u2019s space missions Cultural Events \u2013 Art, music, and performances \u20b91199 \u2013 Day 2 Pass | 30th January 2026 Includes entry to Day 2 of Invento \u201926 featuring: Pro show by Fejo Free access to any one technical workshop Access to the Job Fair Entry to Expos Entry to Natya \u2013 The Cultural Night \u20b91299 \u2013 Day 3 Pass | 31st January 2026 Includes entry to Day 3 of Invento \u201926 featuring: Pro show by Haricharan Free access to any one technical workshop Access to the Job Fair Entry to Expos Entry to Taksati - The Fashion Fest \u20b91999 \u2013 Bundle Pass (Day 2 &amp; Day 3) Enjoy the complete Invento \u201926 experience with: Pro shows by Fejo &amp; Haricharan Free access to any one technical workshop Access to the Job Fair Entry to Expos Full access to Natya \u2013 The Cultural Night and Taksati",
-    category: "GENERAL",
-    time: "00:00",
-    venue: "GEC Palakkad",
-    poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/1f301a32-fe8b-4eb8-bdfe-07fd5bb1eb5e/29-logo.png",
-    day: 3,
-    prizePool: "NILL",
-    regFee: "1199",
-    contact: "8590966425, 9995626292",
-    links: {
-      registration: "https://app.makemypass.com/event/day-pass"
-    }
-  },
   {
     id: "1f301a32-fe8b-4eb8-bdfe-07fd5bb1eb5e",
     name: "day-pass",
