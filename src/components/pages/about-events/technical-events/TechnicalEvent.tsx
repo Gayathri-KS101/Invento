@@ -60,7 +60,7 @@ const TechnicalEvent = () => {
             <div className="absolute inset-0 flex flex-col items-center justify-center h-full w-full">
                 
                 {/* GIRL IMAGE COMPONENT */}
-                <div ref={girlRef} className="relative w-[450px] h-[540px] md:w-[500px] md:h-[580px] z-10 md:-translate-y-[150px]" style={{ marginTop: '100px' }}> 
+                <div ref={girlRef} className="relative w-[340px] h-[408px] md:w-[500px] md:h-[580px] z-10 md:-translate-y-[150px]" style={{ marginTop: '100px' }}> 
                     <Image
                         src="/about-events/technical/technical-girl.webp"
                         alt="Technical Girl"
@@ -70,7 +70,7 @@ const TechnicalEvent = () => {
                     />
                 </div>
 
-                <h1 ref={titleRef} className="font-akira text-white text-5xl md:text-7xl lg:text-9xl tracking-wider leading-none md:-translate-y-[120px] z-20 text-center" style={{ marginTop: '0px' }}>
+                <h1 ref={titleRef} className="font-akira text-white text-5xl md:text-7xl lg:text-9xl tracking-wider leading-none md:-translate-y-[120px] z-20 text-center" style={{ marginTop: '20px' }}>
                 TECHNICAL
                 </h1>
             </div>

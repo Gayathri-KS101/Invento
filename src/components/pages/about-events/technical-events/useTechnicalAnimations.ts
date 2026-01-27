@@ -143,7 +143,7 @@ export const useTechnicalAnimations = (done: boolean) => {
 
             tl.fromTo(girlRef.current, 
                 { y: 0 },
-                { y: -350, duration: 1, ease: "none" }, 0
+                { y: -320, duration: 1, ease: "none" }, 0
             );
 
             tl.fromTo(titleRef.current,
