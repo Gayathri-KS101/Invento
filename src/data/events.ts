@@ -121,6 +121,57 @@ export const eventsData: Event[] = [
     }
   },
   {
+  id: "e4509d90-26b9-42c4-ab96-9f36f2866e23",
+  name: "job-fair",
+  title: "JOB FAIR",
+  description: "JOB FAIR Connect with leading companies and explore exciting career opportunities. Interact with recruiters, showcase your skills, and take the next step toward your future.",
+  category: "GENERAL",
+  time: "09:30",
+  venue: "GEC Palakkad",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/e4509d90-26b9-42c4-ab96-9f36f2866e23/94-banner.png",
+  day: 1,
+  prizePool: "",
+  regFee: "299",
+  contact: "7907380362, 9946918908",
+  links: {
+    registration: "https://app.makemypass.com/event/job-fair"
+  }
+},
+{
+  id: "9424112e-f960-4900-ae79-5231e233cdc7",
+  name: "job-fair-1",
+  title: "JOB FAIR FOR GECP",
+  description: "JOB FAIR FOR GECP Connect with leading companies and explore exciting career opportunities. Interact with recruiters, showcase your skills, and take the next step toward your future.",
+  category: "GENERAL",
+  time: "09:30",
+  venue: "Government Engineering College, Sreekrishnapuram",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/9424112e-f960-4900-ae79-5231e233cdc7/3-banner.png",
+  day: 1,
+  prizePool: "",
+  regFee: "0",
+  contact: "7907380362, 9946918908",
+  links: {
+    registration: "https://app.makemypass.com/event/job-fair-1"
+  }
+},
+{
+  id: "939390b8-4b74-4134-86fe-9dde1857c011",
+  name: "mud-race-1",
+  title: "MUD RACE",
+  description: "MUD RACE A thrilling test of speed, strength, and grit through slippery, mud-filled obstacles. GUIDELINES The race consists of one complete lap of the designated mud track and participants must follow the marked route. Failure to complete the lap results in disqualification. Participants must be registered and physically fit. Helmet is mandatory. Dismounting and walking with the cycle is permitted in unsafe sections. Any intentional danger or rule violation may lead to disqualification. Rankings are based on finishing order or recorded timing.",
+  category: "GENERAL",
+  time: "09:30",
+  venue: "GEC Palakkad",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/939390b8-4b74-4134-86fe-9dde1857c011/64-banner.png",
+  day: 1,
+  prizePool: "6K",
+  regFee: "100",
+  contact: "9778084417, 7594933094",
+  links: {
+    registration: "https://app.makemypass.com/event/mud-race-1"
+  }
+},
+  {
     id: "9a85aedc-d616-4513-83a9-52a7dddb1f0f",
     name: "oppana-1",
     title: "OPPANA",
@@ -667,6 +718,57 @@ export const eventsData: Event[] = [
     registration: "https://app.makemypass.com/event/natya"
   }
 },
+{
+  id: "e162ac69-499b-4967-b0b5-6b0b531c1958",
+  name: "bomb-diffusing",
+  title: "BOMB DIFFUSING",
+  description: "BOMB DIFFUSING COMPETITION A high-intensity challenge where teams race against time to defuse a simulated bomb using logic, teamwork, and technical skills. One wrong move could cost it all! DATE : 30th January 2026 GUIDELINES Participation is allowed individually or in teams (maximum 2 members). Participants are given a pre-built logic bomb circuit with missing or incorrect connections. Only basic logic gates (AND, OR, NOT, XOR) are allowed. The task is to achieve the SAFE output condition. One wrong connection activates the explosion LED or buzzer. No external power sources or components are allowed. Participants must complete the task within 5 minutes. Once the explosion is triggered, no retry is allowed. Judges’ decision is final and binding. The first team to defuse the bomb correctly wins.",
+  category: "TECH",
+  time: "11:00",
+  venue: "Digital Electronics Lab, EEE Block, GEC Sreekrishnapuram, Palakkad",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/e162ac69-499b-4967-b0b5-6b0b531c1958/2-banner.png",
+  day: 2,
+  prizePool: "",
+  regFee: "50",
+  contact: "9061342873, 7907986287",
+  links: {
+    registration: "https://app.makemypass.com/event/bomb-diffusing"
+  }
+},
+{
+  id: "cdc88448-752b-4d34-bc94-d65dee3c2fe8",
+  name: "crash-the-box",
+  title: "CRASH THE BOX",
+  description: "CRASH THE BOX COMPETITION Participants are required to design and build a structure using only the materials provided during the event. Once completed, the structure will be dropped from a specified height. The objective is to ensure that the structure withstands the impact and does not break upon hitting the ground. DATE : 30th January 2026 GUIDELINES Teams design a structure to protect an object from impact. Innovation and strength will be evaluated. Basic materials will be provided during the event.",
+  category: "TECH",
+  time: "09:00",
+  venue: "ECE 4th Year, Room EC003, GEC Palakkad",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/cdc88448-752b-4d34-bc94-d65dee3c2fe8/94-banner.png",
+  day: 2,
+  prizePool: "",
+  regFee: "50",
+  contact: "6282299849, 9142637463",
+  links: {
+    registration: "https://app.makemypass.com/event/crash-the-box"
+  }
+},
+{
+  id: "b04e86d8-c303-4825-b511-581fd8a8c6a6",
+  name: "typelt",
+  title: "TYPELT",
+  description: "TYPELT A fast-paced technical typing competition at Invento ’26 that tests participants’ speed and accuracy. The event is a timed typing test focused on precision and focus. Certificates are provided to all participants. Activity points up to 30 are awarded to winners.",
+  category: "TECH",
+  time: "09:00",
+  venue: "CSE Networking Lab",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/b04e86d8-c303-4825-b511-581fd8a8c6a6/10-banner.png",
+  day: 2,
+  prizePool: "",
+  regFee: "30",
+  contact: "7907785542",
+  links: {
+    registration: "https://app.makemypass.com/event/typelt"
+  }
+},
   {
     id: "4fc1d9ed-bf08-4b86-a5ee-097287ed0b00",
     name: "cfd",
@@ -786,6 +888,23 @@ export const eventsData: Event[] = [
       registration: "https://app.makemypass.com/event/english-recitation"
     }
   },
+  {
+  id: "1095ae58-a1d1-4385-90ae-f0eefe40d916",
+  name: "treasure-hunt-5",
+  title: "TREASURE HUNT",
+  description: "TREASURE HUNT A team-based event at Invento ’26 featuring programming and logic-based challenges. Teams work together to solve clues and complete tasks to reach the final treasure. GUIDELINES Team size is 3 members. Fair play is mandatory and location boundaries are enforced. Limited smartphone usage is allowed.",
+  category: "TECH",
+  time: "11:00",
+  venue: "GEC Palakkad",
+  poster: "https://hoomans-blob-prod.s3.ap-south-1.amazonaws.com/makemypass/event/1095ae58-a1d1-4385-90ae-f0eefe40d916/65-banner.png",
+  day: 3,
+  prizePool: "",
+  regFee: "49",
+  contact: "9544399425, 8590829271, 9037326069, 9074019016",
+  links: {
+    registration: "https://app.makemypass.com/event/treasure-hunt-5"
+  }
+},
   {
     id: "8e371031-b157-43dc-97c3-91b9a89ef3a3",
     name: "devops-101",
