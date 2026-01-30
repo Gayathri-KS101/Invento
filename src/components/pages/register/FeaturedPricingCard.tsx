@@ -1,0 +1,104 @@
+import Image from "next/image";
+import React from "react";
+
+type Feature = string;
+
+interface FeaturedPricingCardProps {
+  title: string;
+  subtitle?: string;
+  oldPrice: number;
+  price: number;
+  features: Feature[];
+  buttonText: string;
+  highlight?: boolean;
+}
+
+const FeaturedPricingCard: React.FC<FeaturedPricingCardProps> = ({
+  title,
+  subtitle,
+  oldPrice,
+  price,
+  features,
+  buttonText,
+  highlight = false,
+}) => {
+  const handleRedirect = () => {
+    window.location.href = "https://makemypass.com/event/after-hours";
+  };
+
+  return (
+    <div
+      className={`relative text-black rounded-2xl px-3 py-4 lg:translate-y-7 ${
+        highlight ? "shadow-(--box-shadow) mb-7" : "shadow-none"
+      }`}
+    >
+      <div className="absolute inset-0 bg-white rounded-2xl z-[1]" />
+
+      <div className="relative pl-3 z-10">
+        <h3 className="text-2xl font-bold mb-4 font-akira flex flex-col justify-center text-center">
+          <span>{title}</span>
+          <span>{subtitle}</span>
+        </h3>
+
+        <div className="pb-3">
+          <div className="flex gap-2">
+            <div className="relative inline-block h-10">
+              <span className="text-4xl font-akira opacity-90 tracking-wider">
+                ₹{oldPrice}
+              </span>
+              <div className="absolute top-1/2 left-0 w-full h-1 bg-(--color-text) rotate-[-10deg]" />
+            </div>
+            <Image
+              src={"/register/arrow.svg"}
+              alt="arrow"
+              width={60}
+              height={60}
+              priority
+              className="rotate-10"
+            />
+          </div>
+          <div className="px-3 flex justify-end">
+            <div
+              className={`text-4xl font-akira ${
+                highlight
+                  ? "bg-linear-to-r from-[#000000] to-red-500 bg-clip-text text-transparent "
+                  : ""
+              }`}
+            >
+              ₹{price}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          {features.map((item, i) => (
+            <h2 key={i} className="max-w-80 font-akira text-2xl mb-2 text-black">
+              {item}
+            </h2>
+          ))}
+        </div>
+
+        <div className="flex w-full justify-center">
+          <button
+            onClick={handleRedirect}
+            className={`${
+              highlight ? "px-5 py-4" : "px-3 py-3"
+            } bg-(--color-button) font-akira hover:bg-red-700 transition rounded-xl font-bold text-white`}
+          >
+            {buttonText}
+          </button>
+        </div>
+      </div>
+
+      {highlight && (
+        <div className="absolute -bottom-9 inset-x-0 flex justify-center -z-1">
+          <div className="text-white font-akira border-2 rounded-lg border-(--color-text) py-2 px-3">
+            BEST VALUE PASS
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default FeaturedPricingCard;
